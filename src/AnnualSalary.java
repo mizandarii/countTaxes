@@ -14,7 +14,7 @@ public class AnnualSalary {
         if (annual <= 14400.0) {
             taxFree = 7848.0;
         } else if (annual <= 25200.0) {
-            taxFree = 7848 - (7848 / 10800) * (annual - 14400);
+            taxFree = (7848.00 - (7848.00 / 10800.00) * (annual - 14400.00));
         }else{
             taxFree = 0;
         }
@@ -32,7 +32,7 @@ public class AnnualSalary {
         double insurance = daily * 0.6 * 100 + daily * 0.4 * compensationDays;
         double tax = Math.max(0, (annual - taxFree) * 0.22); // чтобы не было отрицательных налогов
 
-        return new double[]{annual, insurance, tax};
+        return new double[]{annual, insurance, tax, taxFree};
     }
 
     public static void main(String[] args) {
@@ -51,6 +51,8 @@ public class AnnualSalary {
             System.out.printf("Годовой доход: %.2f%n", result[0]);
             System.out.printf("Страховка: %.2f%n", result[1]);
             System.out.printf("Подоходный налог: %.2f%n", result[2]);
+            System.out.printf("Необлагаемый минимум: %.2f%n", result[3]);
+            
 
         } catch (InputMismatchException e) {
             System.out.println("Ошибка: введите только числовые значения.");

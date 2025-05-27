@@ -15,6 +15,8 @@ public class AnnualSalary {
             taxFree = 7848.0;
         } else if (annual <= 25200.0) {
             taxFree = 7848 - (7848 / 10800) * (annual - 14400);
+        }else{
+            taxFree = 0;
         }
 
         int compensationDays = 0;

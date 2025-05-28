@@ -32,7 +32,9 @@ public class AnnualSalary {
         double insurance = daily * 0.6 * 100 + daily * 0.4 * compensationDays;
         double tax = Math.max(0, (annual - taxFree) * 0.22); // чтобы не было отрицательных налогов
 
-        return new double[]{annual, insurance, tax, taxFree};
+        double insuranceRound = Math.round(insurance * 100.0) / 100.0;
+        return new double[]{annual, insuranceRound, tax};
+
     }
 
     public static void main(String[] args) {
@@ -51,8 +53,7 @@ public class AnnualSalary {
             System.out.printf("Годовой доход: %.2f%n", result[0]);
             System.out.printf("Страховка: %.2f%n", result[1]);
             System.out.printf("Подоходный налог: %.2f%n", result[2]);
-            System.out.printf("Необлагаемый минимум: %.2f%n", result[3]);
-            
+            //System.out.printf("Необлагаемый минимум: %.2f%n", result[3]);
 
         } catch (InputMismatchException e) {
             System.out.println("Ошибка: введите только числовые значения.");
